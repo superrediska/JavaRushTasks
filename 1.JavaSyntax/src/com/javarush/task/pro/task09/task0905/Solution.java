@@ -38,7 +38,9 @@ public class Solution {
 
         while( octalNumber != 0){
             decimalNumber = decimalNumber + (octalNumber % 10) * (int)Math.pow(8, i);
-            octalNumber = octalNumber / 10;
+
+
+                    octalNumber = octalNumber / 10;
             i++;
         }
         return decimalNumber;
