@@ -13,14 +13,18 @@ public class StringLinkedList {
     }
 
     public void add(String value) {
-        Node node = new Node();
-        node.value = value;
-
-        Node firstn = first;
-        firstn.next = node;
-        last.prev = node;
-        node.prev = first;
-        node.next = last;
+        Node newNode = new Node();
+        if (first.next != null) {
+            Node preNewNode = last.prev;
+            preNewNode.next = newNode;
+            newNode.prev = preNewNode;
+        } else {
+            first.next = newNode;
+            newNode.prev=first;
+        }
+        newNode.value = value;
+        newNode.next=last;
+        last.prev = newNode;
     }
 
     public static class Node {
