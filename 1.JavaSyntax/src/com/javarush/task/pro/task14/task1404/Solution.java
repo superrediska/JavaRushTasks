@@ -44,6 +44,7 @@ public class Solution {
                 System.out.println(INTEGER_REQUIRED);
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println(NOT_EXIST);
+            }
         }
     }
-}}
+}
