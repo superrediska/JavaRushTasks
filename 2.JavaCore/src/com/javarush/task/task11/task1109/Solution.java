@@ -15,13 +15,12 @@ public class Solution {
 }
 
 class Cat {
-    private String name;
-    private int speed;
+    public String name;
+    public int speed;
 
     public Cat(String name, int speed) {
         this.name = name;
         this.speed = speed;
-        
     }
 
     public String getName() {
