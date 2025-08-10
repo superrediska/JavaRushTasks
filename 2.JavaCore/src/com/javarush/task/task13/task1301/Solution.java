@@ -7,6 +7,7 @@ package com.javarush.task.task13.task1301;
 public class Solution {
     public static void main(String[] args) throws Exception {
     }
+
     public interface Drinker {
         void askForMore(String message);
 
@@ -21,8 +22,27 @@ public class Solution {
         void sleepOnTheFloor();
     }
 
-    public static abstract class BeerLover implements Alcoholic{
+    public static class BeerLover implements Alcoholic{
 
 
+        @Override
+        public void sleepOnTheFloor() {
+
+        }
+
+        @Override
+        public void askForMore(String message) {
+
+        }
+
+        @Override
+        public void sayThankYou() {
+
+        }
+
+        @Override
+        public boolean isReadyToGoHome() {
+            return READY_TO_GO_HOME;
+        }
     }
 }
