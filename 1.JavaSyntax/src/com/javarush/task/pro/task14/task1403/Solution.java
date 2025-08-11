@@ -1,5 +1,7 @@
 package com.javarush.task.pro.task14.task1403;
 
+
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -8,7 +10,7 @@ import java.util.Scanner;
 Помощник преподавателя-2
 */
 
-public class Solution {
+public class Solution  {
 
     public static final String PROMPT_STRING = "Введите номер студента, или exit для выхода: ";
     public static final String EXIT = "exit";
