@@ -21,7 +21,7 @@ public class Solution {
             case "Whale":
                 return "Кит";
             default:
-                return "Неизвестное животное";
+                return "    Неизвестное животное";
         }
     }
 

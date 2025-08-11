@@ -21,15 +21,15 @@ public class Solution {
         public void eat();
     }
 
-    public abstract class Dog implements CanEat, CanMove{
+    public class Dog  {
     }
 
-    public abstract class Duck implements CanEat, CanMove, CanFly{
+    public class Duck {
     }
 
-    public abstract class Car implements CanMove{
+    public class Car {
     }
 
-    public abstract class Airplane implements CanFly, CanMove{
+    public class Airplane {
     }
 }
