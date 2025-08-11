@@ -15,14 +15,32 @@ public class Solution {
     }
 
     public static int countDigits(String string) {
-        //напишите тут ваш код
+        int count = 0;
+        for ( int i = 0; i < string.length(); i++){
+            if (Character.isDigit(string.charAt(i))) {
+                count++;
+            }
+        }
+        return count;
     }
 
     public static int countLetters(String string) {
-        //напишите тут ваш код
+        int count = 0;
+        for ( int i = 0; i < string.length(); i++){
+            if (Character.isLetter(string.charAt(i))) {
+                count++;
+            }
+        }
+        return count;
     }
 
     public static int countSpaces(String string) {
-        //напишите тут ваш код
+        int count = 0;
+        for ( int i = 0; i < string.length(); i++){
+            if (Character.isWhitespace(string.charAt(i))) {
+                count++;
+            }
+        }
+        return count;
     }
 }
