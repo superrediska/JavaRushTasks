@@ -6,4 +6,3 @@ public class Guitar implements MusicalInstrument {
         System.out.println("Играет гитара.");
     }
 }
-
