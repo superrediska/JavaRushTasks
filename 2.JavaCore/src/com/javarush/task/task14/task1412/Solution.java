@@ -15,19 +15,20 @@ public class Solution {
     }
 
     public static void printMainInfo(Object object) {
-        if (object.getClass().getName().equals("Solution$Circle")) {
-            ((Movable) object).move();}
-        else if (object.getClass().getName().equals("Solution$Rectangle"))
+        if (object instanceof Drawable){
             ((Drawable) object).draw();
-    }
+        }
+        if (object instanceof Movable){
+            ((Movable) object).move();
+        }
     }
 
-    interface Movable {
+    static interface Movable {
 
         void move();
     }
 
-    class Circle implements Movable {
+    static class Circle implements Movable {
 
         public void draw() {
             System.out.println("Can be drawn");
@@ -39,11 +40,11 @@ public class Solution {
 
     }
 
-    interface Drawable {
+    static interface Drawable {
         void draw();
     }
 
-    class Rectangle implements Drawable {
+    static class Rectangle implements Drawable {
         public void draw() {
             System.out.println("Can be drawn");
         }
@@ -52,4 +53,4 @@ public class Solution {
             System.out.println("Can be moved");
         }
     }
-
+}
