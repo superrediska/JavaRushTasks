@@ -12,22 +12,24 @@ import java.util.Scanner;
 public class Solution {
     public static int A;
     public static int B;
+    static {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        try{
+            A = Integer.parseInt(reader.readLine());
+            B = Integer.parseInt(reader.readLine());
+            reader.close();
+
+        } catch (IOException e){
+            e.printStackTrace();
+
+        }
+    }
 
     public static final int MIN = min(A, B);
 
     public static void main(String[] args) {
         System.out.println(MIN);
     }
-    static {
-        try {
-            Scanner scanner = new Scanner(System.in);
-            A = scanner.nextInt();
-            B = scanner.nextInt();
-            if (Math.random() * 1000 == 200) throw new IOException();
-        } catch (IOException e) {e.printStackTrace();}
-    }
-
-
 
     public static int min(int a, int b) {
         return a < b ? a : b;
