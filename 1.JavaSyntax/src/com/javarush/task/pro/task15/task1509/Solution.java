@@ -14,10 +14,8 @@ import java.util.Scanner;
 
 public class Solution {
     public static void main(String[] args) {
-        try (InputStream stream = System.in;
-             InputStreamReader reader = new InputStreamReader(stream);
-             BufferedReader buff = new BufferedReader(reader)) {
-            String line = buff.readLine();
+        try (Scanner scan = new Scanner(System.in)){
+            String line = scan.nextLine();
             char[] chars = line.toCharArray();
             Set<Character> characters = new HashSet<>();
             for (char aChar : chars) {
@@ -26,7 +24,7 @@ public class Solution {
                 }
             }
             System.out.println(characters);
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("Something went wrong : " + e);
         }
     }
