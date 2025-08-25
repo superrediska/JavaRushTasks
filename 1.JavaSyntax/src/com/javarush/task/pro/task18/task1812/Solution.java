@@ -31,6 +31,6 @@ public class Solution {
     public static Stream<Language> sortByRanking(ArrayList<Language> languages) {
 
         return languages.stream()
-                .sorted((o1, o2) ->Double.compare(o2.getRanking(), o1.getRanking()));
+                .sorted(((o1, o2) -> Double.compare(o2.getRanking(), o1.getRanking())));
     }
 }
