@@ -12,7 +12,8 @@ public class Solution {
     static ZonedDateTime zonedDateTime = ZonedDateTime.now();
 
     public static void main(String[] args) {
-        DateTimeFormatter date = DateTimeFormatter.ofPattern
-                (String.valueOf(zonedDateTime.getDayOfWeek().getValue()) + " d.M.yy HH:mm:ss.n VV");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("e d.M.yy HH:mm:ss.n VV");
+        String text = dateTimeFormatter.format(zonedDateTime);
+        System.out.println(text);
     }
 }
