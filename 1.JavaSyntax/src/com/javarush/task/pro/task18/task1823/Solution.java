@@ -19,7 +19,6 @@ public class Solution {
     }
 
     public static Set<String> getFilteredStrings(Stream<String> stringStream) {
-        //напишите тут ваш код
-        return new HashSet<>();
+        return stringStream.filter(o1 -> o1.length() > 6).collect(toSet());
     }
 }
