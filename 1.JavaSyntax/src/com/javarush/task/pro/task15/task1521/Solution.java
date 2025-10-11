@@ -16,8 +16,8 @@ public class Solution {
         Scanner scanner = new Scanner(System.in);
         URL url = new URL(scanner.nextLine());
         InputStream input = url.openStream();
-        Path tempPath = Files.createTempFile(null,null);
+        Path tempPath = Files.createTempFile(null, null);
         byte[] buffer = input.readAllBytes();
-        Files.write(tempPath,buffer);
+        Files.write(tempPath, buffer);
     }
 }
