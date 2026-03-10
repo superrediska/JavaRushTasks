@@ -52,17 +52,18 @@ public class Solution {
 
         @Override
         public void run() {
+            List<String> steps = OnlineGame.steps;
             try {
-                for (String step : OnlineGame.steps) {
-                    Thread.sleep(1000 / rating);
+                for (String step : steps) {
                     System.out.println(getName() + ":" + step);
-                    if (step.equals("Убийство врагов") && !OnlineGame.isWinnerFound){
+                    Thread.sleep(1000/rating);
+                    if (step.equals(steps.get(steps.size()-1)) && !OnlineGame.isWinnerFound ){
                         System.out.println(getName() + ":победитель!");
                         OnlineGame.isWinnerFound = true;
 
                     }
                 }
-            } catch (InterruptedException e){
+            } catch (InterruptedException e) {
                 System.out.println(getName() + ":проиграл");
             }
         }
