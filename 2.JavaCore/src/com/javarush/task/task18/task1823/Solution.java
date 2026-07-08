@@ -1,11 +1,8 @@
 package com.javarush.task.task18.task1823;
 
-import java.awt.desktop.SystemSleepEvent;
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.*;
+import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /* 
 Нити и байты
@@ -14,12 +11,12 @@ import java.util.*;
 public class Solution {
     public static Map<String, Integer> resultMap = new HashMap<String, Integer>();
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
         String fileName;
-        while (!(fileName = scanner.nextLine()).equals("exit")) {
-            ReadThread readThread = new ReadThread(fileName);
-            readThread.start();
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
+            while (!(fileName = bufferedReader.readLine()).equals("exit")) {
+                new ReadThread(fileName).start();
+            }
         }
     }
 
@@ -30,33 +27,28 @@ public class Solution {
             this.fileName = fileName;
         }
 
+        byte[] bytes = new byte[256];
+
         @Override
         public void run() {
-            HashMap<Integer, Integer> bytes = new HashMap<>();
             try (FileInputStream fileInputStream = new FileInputStream(fileName)) {
                 while (fileInputStream.available() > 0) {
                     int read = fileInputStream.read();
-                    if (!bytes.containsKey(read)) {
-                        bytes.put(read, 1);
-                    } else {
-                        Integer integer = bytes.get(read);
-                        integer += 1;
-                        bytes.put(read, integer);
-                    }
+                    bytes[read]++;
                 }
-            } catch (IOException ignore) {
-
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-            Collection<Integer> values = bytes.values();
-            Integer max = Collections.max(values);
-            Set<Map.Entry<Integer, Integer>> entries = bytes.entrySet();
-            for (Map.Entry<Integer, Integer> entry : entries) {
-                if (entry.getValue().equals(max)){
-                    resultMap.put(fileName, entry.getKey());
+            int maxCount = 0;
+            int maxCountByte = 0;
+            for (int i = 0; i < bytes.length; i++) {
+                if (bytes[i] > maxCount){
+                    maxCount = bytes[i];
+                    maxCountByte = i;
+
                 }
             }
-
-            // implement file reading here - реализуйте чтение из файла тут
+            resultMap.put(fileName, maxCountByte);
         }
 
     }
