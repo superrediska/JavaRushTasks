@@ -69,11 +69,30 @@ public class Solution {
 
         public void save(OutputStream outputStream) throws Exception {
             PrintWriter printWriter = new PrintWriter(outputStream);
+            printWriter.println(name);
+            printWriter.println(assets.size());
+            if (this.assets.size() > 0) {
+                for (Asset asset : assets) {
+                    printWriter.println(asset.getName());
+                    printWriter.println(asset.getPrice());
+                }
+            }
+            printWriter.close();
 
         }
 
         public void load(InputStream inputStream) throws Exception {
-            //implement this method - реализуйте этот метод
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            name = bufferedReader.readLine();
+            int size = Integer.parseInt(bufferedReader.readLine());
+            assets = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                String assetName = bufferedReader.readLine();
+                double price = Double.parseDouble(bufferedReader.readLine());
+
+                assets.add(new Asset(assetName, price));
+            }
+            bufferedReader.close();
         }
     }
 }
