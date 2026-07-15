@@ -1,19 +1,7 @@
 package com.javarush.task.task13.task1328;
 
 public abstract class AbstractRobot implements Attackable, Defensable {
-    public AbstractRobot(String name) {
-        this.name = name;
-    }
-
-    protected AbstractRobot() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    private static int hitCount;
-    private String name;
+    private int hitCount;
 
     public BodyPart attack() {
         BodyPart attackedBodyPart = null;
@@ -23,13 +11,13 @@ public abstract class AbstractRobot implements Attackable, Defensable {
             attackedBodyPart = BodyPart.ARM;
         } else if (hitCount == 2) {
             attackedBodyPart = BodyPart.HEAD;
-
         } else if (hitCount == 3) {
-            attackedBodyPart = BodyPart.CHEST;
-        } else if (hitCount == 4) {
-            hitCount = 0;
             attackedBodyPart = BodyPart.LEG;
+        } else {
+            hitCount = 0;
+            attackedBodyPart = BodyPart.CHEST;
         }
+
         return attackedBodyPart;
     }
 
@@ -42,13 +30,12 @@ public abstract class AbstractRobot implements Attackable, Defensable {
         } else if (hitCount == 2) {
             defendedBodyPart = BodyPart.LEG;
         } else if (hitCount == 3) {
+            defendedBodyPart = BodyPart.CHEST;
+        } else {
             hitCount = 0;
             defendedBodyPart = BodyPart.ARM;
-        } else if (hitCount == 4) {
-            hitCount = 0;
-            defendedBodyPart = BodyPart.CHEST;
         }
         return defendedBodyPart;
     }
-
 }
+
