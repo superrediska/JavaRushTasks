@@ -9,33 +9,25 @@ import java.util.*;
 
 public class Solution {
     public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(System.in);
-        Map<Integer, String> map = new TreeMap<>();
-        while (true){
-            String str = scanner.nextLine();
-            if (str.equals("end")){
-                break;
+        String fileName;
+        Map<Integer, String> files = new TreeMap<>();
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
+            while (!(fileName = bufferedReader.readLine()).equals("end")) {
+                int index = fileName.lastIndexOf("t");
+                String key = fileName.substring(index + 1);
+                files.put(Integer.parseInt(key), fileName);
             }
-            int index = str.lastIndexOf("t");
-            String substring = str.substring(index+1);
-            int number = Integer.parseInt(substring);
-            map.put(number, str);
-
         }
-        Collection<String> values = map.values();
-        for (String fileName : values){
-            int index = fileName.lastIndexOf(".");
-            String someName = fileName.substring(0, index);
-            try(FileInputStream fileInputStream = new FileInputStream(fileName);
-            FileOutputStream fileOutputStream = new FileOutputStream(someName, true)){
-                while (fileInputStream.available() > 0){
-
-                    fileOutputStream.write(fileInputStream.read());
-
+        for (String fullFileName : files.values()) {
+            String shortFileName = fullFileName.substring(0, fullFileName.lastIndexOf("."));
+            try (BufferedInputStream input = new BufferedInputStream(new FileInputStream(fullFileName));
+            BufferedOutputStream output = new BufferedOutputStream(new FileOutputStream(shortFileName))){
+                while (input.available() > 0){
+                    output.write(input.read());
                 }
-            }
 
         }
-
     }
+
+}
 }
